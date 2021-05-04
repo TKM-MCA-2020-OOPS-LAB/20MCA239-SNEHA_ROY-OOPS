@@ -19,11 +19,11 @@ public class Sum_complex {
 	     imagenary1 = in.nextInt();
 	     
 
-		System.out.println("enter the real part of your 1st complex number : ");
+		System.out.println("enter the real part of your 2nd complex number : ");
 			
 		real2 = in.nextInt();
 			
-		System.out.println("enter the imagenary part of your 1st complex number :");
+		System.out.println("enter the imagenary part of your 2nd complex number :");
 			
 		 imagenary2 = in.nextInt();
 		     
