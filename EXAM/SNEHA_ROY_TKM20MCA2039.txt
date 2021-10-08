@@ -1,0 +1,197 @@
+
+
+
+SECOND SEMESTER MCA DEGREE PRACTICAL EXAMINATION 
+20MCA 132 OBJECT ORIENTED PROGRAMMING LAB
+
+
+SUBMITTED BY :
+SNEHA ROY
+TKM20MCA2039
+
+
+
+CODE:
+home.java:
+--------------------------------------------------------------------------------------------------------------------------
+package exam08;
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Home extends Applet implements ActionListener{
+
+	Button b1,b2;
+	int a,b;
+	int X,Y;
+	
+	public void init() {
+	
+		b1=new Button("DAY");
+		b2=new Button("NIGHT");
+		add(b1);
+		add(b2);
+		b1.setBounds(70,250,69,30);
+		b2.setBackground(Color.blue);
+		b2.setBounds(10,250,69,30);
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		setLayout(null);
+		setVisible(true);
+		
+	}
+	
+	public void paint(Graphics g) {
+		
+	g.setColor(Color.BLACK);
+	g.drawLine(120,250,120,100);
+	g.drawLine(120,100,200,100);
+	g.drawLine(200,100,200,250);
+	g.drawLine(120,250,200,250);
+	g.drawLine(120,100,160,40);
+	g.drawLine(200,100,160,40);
+	g.drawLine(150,170,178,170);
+	g.drawLine(150,170,150,250);
+	g.drawLine(178,170,178,250);
+	g.setColor(Color.orange);
+	g.fillOval(30,30,40,40);
+	
+	if(a>10 && a<70 && b>250 && b<350) {
+		g.setColor(Color.white);
+		g.fillOval(30,30,40,40);
+		g.setColor(Color.darkGray);
+		g.fillRect(10, 400, 400, 400);
+	}
+		
+	}
+	public void MouseClicked(MouseEvent e) {
+		
+		a= e.getX();
+		b= e.getY();
+		repaint();
+	
+		
+	}
+public void MouseEntered(MouseEvent e) {
+		
+	}
+public void MouseExited(MouseEvent e) {
+	
+	
+}
+public void MousePressed(MouseEvent e) {
+	
+}
+public void MouseReleased(MouseEvent e) {
+
+	
+}
+
+
+
+	
+	
+	
+	public void actionPerformed(ActionEvent e){
+		if(e.getSource()==b1) {
+			try {
+				FileReader reader = new FileReader("C:\\Users\\19MCA47\\Documents\\EXAM\\male.txt");
+				BufferedReader words = new BufferedReader(reader);
+				String i;
+				while((i=words.readLine())!=null) {
+					System.out.println(i);
+					
+					
+				}
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			if(e.getSource()==b2) {
+				
+				try {
+					FileReader reade = new FileReader("C:\\Users\\19MCA47\\Documents\\EXAM\\female.txt");
+					BufferedReader word = new BufferedReader(reade);
+					String in;
+					while((in=word.readLine())!=null) {
+						System.out.println(in);
+						
+						
+						
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}}
+		}
+		
+	}
+
+}
+
+
+-----------------------------------------------------------------------------
+names.java
+package exam08;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Names {
+
+	public static void main(String[] args) throws IOException {
+		Scanner scan = new Scanner(System.in);
+		int num,sgender;
+		String sname;
+		System.out.println("enter the number of students to be entered : ");
+		num= scan.nextInt();
+	
+		ArrayList<String> name = new ArrayList<String>(num);
+	ArrayList<Integer> gender = new ArrayList<Integer>(num);
+		
+		
+		for(int i=0; i<num; i++) {
+			System.out.println("enter the name : ");
+			sname=scan.next();
+			System.out.println("gender (1 for male, 2 for females : ");
+			sgender= scan.nextInt();
+			
+			if(sgender ==1) {
+				FileWriter w = new FileWriter("C:\\Users\\19MCA47\\Documents\\EXAM\\male.txt",true);
+				BufferedWriter bf = new BufferedWriter(w);
+				bf.write("name: "+sname+"\t\n");
+				bf.close();
+			}
+			else {
+				FileWriter f= new FileWriter("C:\\Users\\19MCA47\\Documents\\EXAM\\female.txt",true);
+				BufferedWriter bf = new BufferedWriter(f);
+			bf.write("name: "+sname+"\t\n");
+			bf.close();
+			}
+		}
+
+	}
+
+}
+---------------------------------------------------------------------------------OUTPUT
+ 
+
